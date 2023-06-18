@@ -1,0 +1,684 @@
+GRID M10-8Q
+GRID M3-3020
+GRID M40
+GeForce 920MX
+GeForce 940MX
+GeForce 945M
+GeForce GT 610 OEM
+GeForce GTX 1050
+GeForce GTX 1050 Ti
+GeForce GTX 1060 3 GB
+GeForce GTX 1060 3 GB
+GeForce GTX 1060 6 GB
+GeForce GTX 1060 6 Mobile
+GeForce GTX 1070
+GeForce GTX 1070 Mobile
+GeForce GTX 1080
+GeForce GTX 1080 Mobile
+GeForce GTX 760 OEM
+GeForce GTX 980MX
+Quadro GP100
+Quadro M2000
+Quadro M3000 SE
+Quadro M500M
+Quadro M5500 Mobile
+Quadro M6000 24 GB
+Quadro P5000
+Quadro P6000
+TITAN X Pascal
+Tesla M10
+Tesla P10
+Tesla P100 DGXS
+Tesla P100 PCIe 12 GB
+Tesla P100 PCIe 16 GB
+Tesla P100 SXM2
+Tesla P4
+Tesla P40
+GeForce GT 1030
+GeForce GT 720 OEM
+GeForce GTX 1050 Ti Mobile
+GeForce GTX 1060 5 GB
+GeForce GTX 1060 6 GB 9Gbps
+GeForce GTX 1060 Max-Q
+GeForce GTX 1070 Max-Q
+GeForce GTX 1070 Ti
+GeForce GTX 1080 11Gbps
+GeForce GTX 1080 Max-Q
+GeForce GTX 1080 Ti
+GeForce MX110
+GeForce MX130
+GeForce MX150
+GeForce MX150
+P104-100
+P106-090
+P106-100
+Quadro M1200 Mobile
+Quadro M520 Mobile
+Quadro M620 Mobile
+Quadro P1000
+Quadro P1000
+Quadro P1000 Mobile
+Quadro P2000
+Quadro P2000 Mobile
+Quadro P400
+Quadro P4000
+Quadro P5000 X2 Mobile
+Quadro P600
+Quadro P600 Mobile
+Switch GPU 20nm
+TITAN V
+TITAN Xp
+Tesla P6 Mobile
+Tesla V100 PCIe 16 GB
+Tesla V100 SXM2 16 GB
+GeForce GT 1030 DDR4
+GeForce GT 1030 GK107
+GeForce GTX 1050 3 GB
+GeForce GTX 1050 Max-Q
+GeForce GTX 1050 Ti Max-Q
+GeForce GTX 1060 6 GB GDDR5X
+GeForce GTX 1060 6 GB GP104
+GeForce GTX 1060 6 GB Rev. 2
+GeForce GTX 1060 8 GB GDDR5X
+GeForce GTX 1070 GDDR5X
+GeForce GTX 1080 Ti 10 GB
+GeForce RTX 2070
+GeForce RTX 2080
+GeForce RTX 2080 Engineering Sample
+GeForce RTX 2080 Ti
+Jetson AGX Xavier 16 GB
+Jetson AGX Xavier 32 GB
+P102-100
+P102-101
+P104-101
+Quadro GV100
+Quadro P3200 Max-Q
+Quadro P3200 Mobile
+Quadro P4200 Max-Q
+Quadro P4200 Mobile
+Quadro P500 Mobile
+Quadro P5200 Max-Q
+Quadro P5200 Mobile
+Quadro P620
+Quadro P620 Mobile
+Quadro RTX 4000
+Quadro RTX 5000
+Quadro RTX 6000
+Quadro RTX 6000 Passive
+Quadro RTX 8000
+Quadro RTX 8000 Passive
+TITAN RTX
+TITAN V CEO Edition
+Tesla T4
+Tesla T4G
+Tesla V100 DGXS 16 GB
+Tesla V100 DGXS 32 GB
+Tesla V100 FHHL
+Tesla V100 PCIe 32 GB
+Tesla V100 SXM2 32 GB
+Tesla V100 SXM3 32 GB
+
+Radeon 540 Mobile
+Radeon 540X Mobile
+Radeon 550X
+Radeon 610 Mobile
+Radeon 620 Mobile
+Radeon 625 Mobile
+Radeon 625 OEM
+Radeon 630 Mobile
+Radeon E9390 PCIe
+Radeon E9560 PCIe
+Radeon Pro 5300M
+Radeon Pro 5500M
+Radeon Pro 570X
+Radeon Pro 575X
+Radeon Pro 580X
+Radeon Pro Vega 48
+Radeon Pro Vega 64X
+Radeon Pro Vega II
+Radeon Pro Vega II Duo
+Radeon Pro W5300M
+Radeon Pro W5500X
+Radeon Pro W5700
+Radeon Pro W5700X
+Radeon Pro WX 3200
+Radeon Pro WX 3200 Mobile
+Radeon RX 5300 XT OEM
+Radeon RX 5300M
+Radeon RX 5500 OEM
+Radeon RX 5500 XT
+Radeon RX 5500M
+Radeon RX 560 XT
+Radeon RX 5700
+Radeon RX 5700 XT
+Radeon RX 5700 XT 50th Anniversary
+Radeon RX 640 Mobile
+Radeon RX Vega 11
+Radeon RX Vega 11 Mobile
+Radeon VII
+Radeon Vega 10 Mobile
+Radeon Vega 11
+Radeon Vega 3
+Radeon Vega 3 Embedded
+Radeon Vega 8
+Radeon Vega 8 Mobile
+Radeon Vega 9 Mobile
+
+Iris Plus Graphics 645 Mobile
+Iris Plus Graphics G4 48EU Mobile
+UHD Graphics 24EU Mobile
+UHD Graphics 24EU Mobile
+UHD Graphics 24EU Mobile
+UHD Graphics 24EU Mobile
+
+GeForce GTX 1050 Mobile 3 GB
+GeForce GTX 1650
+GeForce GTX 1650
+GeForce GTX 1650 Mobile
+GeForce GTX 1650 SUPER
+GeForce GTX 1660
+GeForce GTX 1660 SUPER
+GeForce GTX 1660 Ti
+GeForce GTX 1660 Ti Max-Q
+GeForce GTX 1660 Ti Mobile
+GeForce MX150 GP107
+GeForce MX230
+GeForce MX250
+GeForce MX250
+GeForce RTX 2060 Max-Q Refresh
+GeForce RTX 2060 Mobile
+GeForce RTX 2060 Mobile Refresh
+GeForce RTX 2060 SUPER
+GeForce RTX 2060 SUPER Mobile
+GeForce RTX 2070 Max-Q
+GeForce RTX 2070 Mobile
+GeForce RTX 2070 SUPER
+GeForce RTX 2080 Max-Q
+GeForce RTX 2080 Mobile
+GeForce RTX 2080 SUPER
+GeForce RTX 2080 Ti 12 GB
+Jetson Nano
+Quadro P2000 Mobile
+Quadro P2200
+Quadro P520 Max-Q
+Quadro P520 Mobile
+Quadro RTX 3000 Max-Q
+Quadro RTX 3000 Mobile
+Quadro RTX 3000 Mobile Refresh
+Quadro RTX 3000 X2 Mobile
+Quadro RTX 4000 Max-Q
+Quadro RTX 4000 Mobile
+Quadro RTX 5000 Max-Q
+Quadro RTX 5000 Mobile
+Quadro RTX 6000 Mobile
+Quadro T1000 Max-Q
+Quadro T1000 Mobile
+Quadro T2000 Max-Q
+Quadro T2000 Mobile
+Switch GPU 16nm
+Tesla PG500-216
+Tesla PG503-216
+Tesla V100 SXM2 16 GB
+Tesla V100S PCIe 32 GB
+
+Radeon Pro 5500 XT
+Radeon Pro 5600M
+Radeon Pro 5700
+Radeon Pro 5700 XT
+Radeon Pro V520
+Radeon Pro V540
+Radeon Pro VII
+Radeon Pro W5500
+Radeon Pro W5500M
+Radeon RX 5300 OEM
+Radeon RX 5600 OEM
+Radeon RX 5600 XT
+Radeon RX 5600M
+Radeon RX 5700M
+Radeon RX 590 GME
+Radeon RX 640 OEM
+Radeon RX 6800
+Radeon RX 6800 XT
+Radeon RX 6900 XT
+Radeon RX 6900 XTX
+Radeon Vega 3 Mobile
+Xbox Series S GPU
+Xbox Series X GPU
+
+A100 PCIe 40 GB
+A100 SXM4 40 GB
+A100 SXM4 80 GB
+A40 PCIe
+DRIVE A100 PROD
+GRID A100A
+GRID A100B
+GRID RTX T10-16
+GRID RTX T10-2
+GRID RTX T10-4
+GRID RTX T10-8
+GRID RTX T10-8
+GeForce GTX 1650 Max-Q
+GeForce GTX 1650 Mobile
+GeForce GTX 1650 TU106
+GeForce GTX 1650 TU116
+GeForce GTX 1650 Ti Max-Q
+GeForce GTX 1650 Ti Mobile
+GeForce MX330
+GeForce MX350
+GeForce MX350
+GeForce MX450 12W
+GeForce MX450 30.5W 10Gbps
+GeForce MX450 30.5W 8Gbps
+GeForce RTX 2060 Max-Q
+GeForce RTX 2060 TU104
+GeForce RTX 2070 Max-Q Refresh
+GeForce RTX 2070 Mobile Refresh
+GeForce RTX 2070 SUPER Max-Q
+GeForce RTX 2070 SUPER Mobile
+GeForce RTX 2080 SUPER Max-Q
+GeForce RTX 2080 SUPER Mobile
+GeForce RTX 3060 Ti
+GeForce RTX 3070
+GeForce RTX 3080
+GeForce RTX 3090
+Jetson Xavier NX 16 GB
+Jetson Xavier NX 8 GB
+Quadro RTX 5000 Mobile Refresh
+Quadro RTX 5000 X2 Mobile
+Quadro T1000 Mobile GDDR6
+RTX A6000
+T500 Max-Q
+T500 Mobile
+Tesla T10 16 GB
+
+Radeon PRO V620
+Radeon PRO W6600
+Radeon PRO W6800
+Radeon Pro W6600M
+Radeon Pro W6600X
+Radeon Pro W6800X
+Radeon Pro W6800X Duo
+Radeon Pro W6900X
+Radeon RX 6600
+Radeon RX 6600 XT
+Radeon RX 6600M
+Radeon RX 6700
+Radeon RX 6700 XT
+Radeon RX 6700M
+Radeon RX 6800M
+
+Arctic Sound 1T
+Arctic Sound 2T
+
+A10 PCIe
+A100 PCIe 80 GB
+A100X
+A10G
+A16 PCIe
+A2
+A2 PCIe
+A30 PCIe
+A30X
+CMP 170HX 10 GB
+CMP 170HX 8 GB
+CMP 30HX
+CMP 40HX
+CMP 50HX
+CMP 70HX
+CMP 90HX
+GeForce GT 1010
+GeForce GT 1010 DDR4
+GeForce MX550
+GeForce MX570
+GeForce MX570 A
+GeForce RTX 2050 Max-Q
+GeForce RTX 2050 Mobile
+GeForce RTX 2060 12 GB
+GeForce RTX 3050 Max-Q
+GeForce RTX 3050 Mobile
+GeForce RTX 3050 Ti Max-Q
+GeForce RTX 3050 Ti Mobile
+GeForce RTX 3060 12 GB
+GeForce RTX 3060 12 GB GA104
+GeForce RTX 3060 Max-Q
+GeForce RTX 3070 Max-Q
+GeForce RTX 3070 Mobile
+GeForce RTX 3070 Ti
+GeForce RTX 3080 Max-Q
+GeForce RTX 3080 Mobile
+GeForce RTX 3080 Ti
+PG506-207
+PG506-217
+PG506-232
+PG506-242
+Quadro T1200 Max-Q
+Quadro T1200 Mobile
+RTX A2000
+RTX A2000 12 GB
+RTX A2000 Max-Q
+RTX A2000 Mobile
+RTX A3000 Mobile
+RTX A3000 Mobile 12 GB
+RTX A4 Mobile
+RTX A4000
+RTX A4000 Max-Q
+RTX A4000 Mobile
+RTX A4000H
+RTX A4500
+RTX A500
+RTX A5000
+RTX A5000 Max-Q
+RTX A5000 Mobile
+RTX A5000-12Q
+RTX A5000-8Q
+T1000
+T1000 8 GB
+T400
+T400 4 GB
+T600
+T600 Max-Q
+T600 Mobile
+
+Radeon RX 6300M
+Radeon RX 6400
+Radeon RX 6500 XT
+Radeon RX 6500M
+Radeon RX 6600S
+Radeon RX 6650 XT
+Radeon RX 6650M
+Radeon RX 6650M XT
+Radeon RX 6700S
+Radeon RX 6750 XT
+Radeon RX 6800S
+Radeon RX 6850M XT
+Radeon RX 6950 XT
+Radeon RX 7900 XT
+Radeon RX 7900 XTX
+Radeon RX 7950 XT
+Radeon RX 7950 XTX
+
+Arc A370M
+Arc A380
+Arc A550M
+Arc A580
+Arc A730M
+Arc A750
+Arc A770
+Arc A770M
+Arc A780
+Arc Pro A30M
+
+A800 PCIe 40 GB
+A800 PCIe 80 GB
+A800 SXM4 80 GB
+GeForce GTX 1630
+GeForce RTX 3050 4 GB
+GeForce RTX 3050 8 GB
+GeForce RTX 3050 8 GB GA107
+GeForce RTX 3050 Max-Q Refresh 4 GB
+GeForce RTX 3050 Max-Q Refresh 6 GB
+GeForce RTX 3050 Mobile Refresh 4 GB
+GeForce RTX 3050 Mobile Refresh 6 GB
+GeForce RTX 3060 8 GB
+GeForce RTX 3060 8 GB GA104
+GeForce RTX 3060 Ti GA103
+GeForce RTX 3060 Ti GDDR6X
+GeForce RTX 3070 Ti 16 GB
+GeForce RTX 3070 Ti 8 GB GA102
+GeForce RTX 3070 Ti Mobile
+GeForce RTX 3070 TiM
+GeForce RTX 3080 12 GB
+GeForce RTX 3080 Ti Max-Q
+GeForce RTX 3080 Ti Mobile
+GeForce RTX 3090 Ti
+GeForce RTX 4080
+GeForce RTX 4080 12 GB
+GeForce RTX 4090
+
+Radeon PRO W7800
+Radeon PRO W7900
+Radeon RX 6450M
+Radeon RX 6550M
+Radeon RX 6550S
+Radeon RX 7500 XT
+Radeon RX 7600
+Radeon RX 7600M
+Radeon RX 7600M XT
+Radeon RX 7600S
+Radeon RX 7700
+Radeon RX 7700 XT
+Radeon RX 7700S
+Radeon RX 7800
+Radeon RX 7990 XTX
+
+Data Center GPU Max 1100
+Data Center GPU Max 1350
+Data Center GPU Max 1550
+Data Center GPU Max Subsystem
+
+GeForce RTX 4050
+GeForce RTX 4050 Max-Q
+GeForce RTX 4050 Mobile
+GeForce RTX 4060
+GeForce RTX 4060 AD106
+GeForce RTX 4060 Max-Q
+GeForce RTX 4060 Mobile
+GeForce RTX 4060 Ti 16 GB
+GeForce RTX 4060 Ti 8 GB
+GeForce RTX 4070
+GeForce RTX 4070 Max-Q
+GeForce RTX 4070 Mobile
+GeForce RTX 4070 Ti
+GeForce RTX 4080 Max-Q
+GeForce RTX 4080 Mobile
+GeForce RTX 4080 Ti
+GeForce RTX 4090 Max-Q
+GeForce RTX 4090 Mobile
+GeForce RTX 4090 Ti
+Jetson AGX Orin 32 GB
+Jetson AGX Orin 64 GB
+Jetson Orin NX 16 GB
+Jetson Orin NX 8 GB
+Jetson Orin Nano 4 GB
+Jetson Orin Nano 8 GB
+RTX 2000 Max-Q Ada Generation
+RTX 2000 Mobile Ada Generation
+RTX 3000 Mobile Ada Generation
+RTX 3500 Mobile Ada Generation
+RTX 4000 Mobile Ada Generation
+RTX 4000 SFF Ada Generation
+RTX 5000 Ada Generation
+RTX 5000 Max-Q Ada Generation
+RTX 5000 Mobile Ada Generation
+RTX TITAN Ada
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
