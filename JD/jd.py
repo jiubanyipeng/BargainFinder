@@ -1,7 +1,6 @@
 import requests
 import time
 from bs4 import BeautifulSoup
-import random
 import smtplib
 from email.mime.text import MIMEText
 from apscheduler.schedulers.background import BackgroundScheduler

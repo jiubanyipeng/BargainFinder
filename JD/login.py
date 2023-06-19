@@ -1,9 +1,4 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
 import asyncio
-from random import random
-from socket import timeout
-from time import sleep
 import pyperclip
 import os
 from pyppeteer import launch
