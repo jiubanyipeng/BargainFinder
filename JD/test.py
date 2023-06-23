@@ -1,6 +1,7 @@
 import requests
 from lxml import etree
 from urllib.parse import quote
+import time
 
 
 # 返回一百页的数据，一页60,60*100*5
@@ -8,59 +9,65 @@ def jd_list():
     url_list = []
     a = 669
     for i in range(5):
+        # 京东全部分类 https://www.jd.com/allSort.aspx
         a += 1
         url = f'https://list.jd.com/list.html?cat={a}'
         url_list.append(url)
     return url_list
 
 
-def run(keyword,run_page):
+def run(keyword, run_page):
     headers = {
         'X-Requested-With': 'XMLHttpRequest',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+        'Cookie': '__jdu=322959; shshshfpa=eaa5fefb-e748-b2af-be36-940c110d1275-1684398876; shshshfpx=eaa5fefb-e748-b2af-be36-940c110d1275-1684398876; qrsc=3; unpl=JF8EAKdnNSttD0gEBUlRHBASQ1tVWwoAQkcDOjIMXA1RSVYMGAJOFEV7XlVdXxRKEB9vZhRUXFNKVg4ZCisSEXteXVdZDEsWC2tXVgQFDQ8VXURJQlZAFDNVCV9dSRZRZjJWBFtdT1xWSAYYRRMfDlAKDlhCR1FpMjVkXlh7VAQrABgRGE9VZF9tD3snM29gBFBbaEpkBCtAT04QQ1pWX1pFSRQAZ2MNZFxoSA; __jdv=76161171|baidu-pinzhuan|t_288551095_baidupinzhuan|cpc|0f3d30c8dba7459bb52f2eb5eba8ac7d_0_f2a1cb6339704f98a1dd89a833821d7d|1686362620546; rkv=1.0; pin=%E7%8E%96%E4%BC%B4%E4%B8%80%E9%B9%8F; _tp=4zRrM9YpPXMr0gZUn5PYUyddTrEEJ76c2XK0oQJBVKOjsKqUYF%2FfXN03gxbbuDat; _pst=%E7%8E%96%E4%BC%B4%E4%B8%80%E9%B9%8F; TrackID=1XUVkkKa4SCtnxv0218Zn2eJUu90Q_fGPQnPZ8msV_WBm39NrnStsF34nN8OR26zNwXFZVda9iEQrMBbkqNuZRWA6qxDNumuhD-6xcb45myY|||e02rlt3J6lZVoNrvGZWKRA; unick=%E7%8E%96%E4%BC%B4%E4%B8%80%E9%B9%8FcNc; pinId=e02rlt3J6lZVoNrvGZWKRA; PCSYCityID=CN_440000_440300_0; areaId=19; ipLoc-djd=19-1607-4773-62121; shshshfpb=g0fazoakDjkhE7neTj4l1qA; 3AB9D23F7A4B3CSS=jdd03VSSLOGJDPQZGHSFYJN4TRQUZYLMRXZI7ZH34UJYTRQDYECUXRQ73BOII7TISGS3B7HHM2GIXIXXGRAD7JFHNPIVKPUAAAAMI45JNKQYAAAAAC23GUJYQUAXAH4X; _gia_d=1; shshshsID=b9798980451d87db241d8da4e57f94f0_1_1687508145759; jsavif=1; jsavif=1; xapieid=jdd03VSSLOGJDPQZGHSFYJN4TRQUZYLMRXZI7ZH34UJYTRQDYECUXRQ73BOII7TISGS3B7HHM2GIXIXXGRAD7JFHNPIVKPUAAAAMI45JNKQYAAAAAC23GUJYQUAXAH4X; __jda=122270672.322959.1684398874.1687506073.1687508145.24; __jdb=122270672.2.322959|24.1687508145; __jdc=122270672; 3AB9D23F7A4B3C9B=VSSLOGJDPQZGHSFYJN4TRQUZYLMRXZI7ZH34UJYTRQDYECUXRQ73BOII7TISGS3B7HHM2GIXIXXGRAD7JFHNPIVKPU'
     }
     encoded_keyword = quote(keyword)
     referer = f'https://search.jd.com/Search?keyword={encoded_keyword}&enc=utf-8&qrst=1&rt=1&stop=1&vt=2&psort=3&click=0'
     headers['Referer'] = referer
-
-    # 每页前30个商品
-    base_url = '''https://search.jd.com/s_new.php?keyword=''' + encoded_keyword + '''
-        &enc=utf-8&qrst=1&rt=1&stop=1&vt=2&psort=3&page={p}&s={count}&click=0'''
-    # 每页后30个商品
-    ajax_url = '''https://search.jd.com/s_new.php?keyword=''' + encoded_keyword + '''
-        &enc=utf-8&qrst=1&rt=1&stop=1&vt=2&psort=3&page={p}&s=31&scrolling=y
-        &log_id=1507459781.34746&tpl=1_M'''
-
+    data = []
     i = 1
-    while i < run_page * 2 + 1:
+    count = 26
+    while i - 1 < run_page:
         print(i)
-        url = base_url.format(p=i, count=(i - 1) * 60 + 1)
-        r = requests.get(url, headers=headers).text
-        i = i + 1
+        base_url = f'https://search.jd.com/s_new.php?keyword={encoded_keyword}&enc=utf-8&qrst=1&rt=1&stop=1&vt=2&psort=3&page={i}&s={count}&click=0'
+        xpaths = '//*[@class="gl-warp clearfix"]/li/div/div[@class="p-img"]/a/@href'
+        try:
+            r = etree.HTML(requests.get(base_url, headers=headers).text)
+            url_list = r.xpath(xpaths)
+            # print(url_list)
+            # 页面是否存在数据
+            if len(url_list) < 1:
+                break
+            elif len(url_list) < 30:
+                data.append(url_list)
+                break
+            else:
+                data.append(url_list)
+            time.sleep(3)
 
-        url = ajax_url.format(p=i)
-        r = requests.get(url, headers=headers).text
-        i = i + 1
+            # 第二页
+            i = i + 1
+            count += 30
+            base_url = f'https://search.jd.com/s_new.php?keyword={encoded_keyword}&enc=utf-8&qrst=1&rt=1&stop=1&vt=2&psort=3&page={i}&s={count}&click=0'
+            r = etree.HTML(requests.get(base_url, headers=headers).text).xpath(xpaths)
+            data.append(r)
+
+            # 之后的页数
+            i = i + 1
+            count += 30
+            time.sleep(5)
+        except Exception as e:
+            print('出错', e)
+            time.sleep(600)
+    return data
 
 
-string = 'RTX 4060'
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'}
-xpaths = '//*[@class="gl-warp clearfix"]/li/div/div[@class="p-img"]/a/@href'
-xp = '//*[@class="p-skip"]/em/b/text()'
-encoded_keyword = quote(string)
-url = f'https://search.jd.com/Search?keyword={encoded_keyword}'
-response = requests.get(url,headers=headers)
-s = etree.HTML(response.text)
-print(response.text)
-ss = s.xpath(xp)
+with open('data.txt', 'r', encoding='utf-8') as f:
+    string_list = f.read().split('\n')
 
-url_list = 'https://search.jd.com/s_new.php?keyword=3060&pvid=3ec880aee1c746108774e1b38abd2c64&page=3&scrolling=y&log_id=1687167533152.9633&tpl=1_M&isList=0'
-
-print(ss)
-print(len(ss))
-
-
-
-
-
-
+for string in string_list:
+    for i in run(string, 100):
+        for ii in i:
+            with open('item_url.txt', 'a', encoding='utf-8') as f:
+                f.write(ii + '\n')
