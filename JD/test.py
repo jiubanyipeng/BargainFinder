@@ -1,8 +1,5 @@
-import requests
-from lxml import etree
 import asyncio
 import aiomysql
-
 from pyppeteer import launch
 
 
@@ -23,97 +20,117 @@ proxy_server = 'your_proxy_server_address:your_proxy_port'
 
 
 async def fetch_and_save(url, pool, semaphore):
-    async with semaphore:
-        browser = await launch(headless=False,dumpio=True, autoClose=False,args=['--no-sandbox', '--window-size=1000,800', '--disable-infobars']) # f'--proxy-server={proxy_server}',
-        page = await browser.newPage()
+    try:
+        await asyncio.sleep(2)
+        async with semaphore:
+            browser = await launch({'headless': True, 'userDataDir': r'D:\jd','args': ['--disable-infobars', '--window-size=1920,1080'], 'dumpio': True})
+            page = await browser.newPage()  # await browser.createIncognitoBrowserContext() # 隐身模式
+            await page.setExtraHTTPHeaders(headers)
+            # await page.setCookie(cookie)
 
-        await page.setExtraHTTPHeaders(headers)
-        # await page.setCookie(cookie)
+            await page.goto(url,{'waitUntil': 'networkidle2'})  # 访问页面 当500毫秒内无网络连接进行下一步
+            # 使用XPath获取文本内容
+            product_name_id = url.split('https://item.jd.com/')[1].split('.')[0]  # 获取商品的item的id
+            xpath_sort = '//*[@id="crumb-wrap"]/div/div[1]/div/a/text()'  # 商品分类
+            xpath_name = '//*[@id="crumb-wrap"]/div/div[2]/div[2]/div[1]/div/a/text()'  # 商品店名
+            xpath_title = '/html/body/div[6]/div/div[2]/div[1]/text()'  # 商品标题
+            xpath_product_name = f'//*[@id="choose-attr-1"]/div[2]/div[@data-sku="{product_name_id}"]/a/i/text()'  # 购买的商品名称，比如套餐
+            xpath_price = f'//*/span[@class="price J-p-{product_name_id}"]/text()'  # 商品价格
+            xpath_promotion = '//*/div[@class="prom-item"]/em[@class="hl_red"]/text()'  # 促销 先判断是否存在多个，促销 ('元')[0]('满')  [1]('减') ，最后得到数字
+            xpath_coupon = '//*/span[@class="quan-item"]/span/text()'  # 优惠券  re('满').split('减')
+            xpath_in_store = '//*/div[@id="store-prompt"]/strong/text()'  # 是否有货
+            xpath_evaluate = f'//*/a[@class="count J-comm-{product_name_id}"]/text()'  # 累计评价
 
-        await page.goto(url)
+            page_sort = await page.xpath(xpath_sort)
+            page_name = await page.xpath(xpath_name)
+            page_title = await page.xpath(xpath_title)
+            page_product_name = await page.xpath(xpath_product_name)
+            page_price = await page.xpath(xpath_price)
+            page_promotion = await page.xpath(xpath_promotion)
+            page_coupon = await page.xpath(xpath_coupon)
+            page_in_store = await page.xpath(xpath_in_store)
+            page_evaluate = await page.xpath(xpath_evaluate)
 
-        # 使用XPath获取文本内容
-        product_name = url.split('https://item.jd.com/')[1].split('.')[0]  # 获取商品的item的id
-        xpath_sort = '//*[@id="crumb-wrap"]/div/div[1]/div/a/text()'  # 商品分类
-        xpath_name = '//*[@id="crumb-wrap"]/div/div[2]/div[2]/div[1]/div/a/text()'  # 商品店名
-        xpath_title = '/html/body/div[6]/div/div[2]/div[1]/text()'  # 商品标题
-        xpath_product_name = f'//*[@id="choose-attr-1"]/div[2]/div[@data-sku="{product_name}"]/a/i/text()'  # 购买的商品名称，比如套餐
-        xpath_price = f'//*/span[@class="price J-p-{product_name}"]/text()'  # 商品价格
-        xpath_promotion = '//*/div[@class="prom-item"]/em[@class="hl_red"]/text()'  # 促销 先判断是否存在多个，促销 ('元')[0]('满')  [1]('减') ，最后得到数字
-        xpath_coupon = '//*/span[@class="quan-item"]/span/text()'  # 优惠券  re('满').split('减')
-        xpath_in_store = '//*/div[@id="store-prompt"]/strong/text()'  # 是否有货
-        xpath_evaluate = f'//*/a[@class="count J-comm-10071503513070"]/text()'  # 累计评价
+            # 提取文本内容
+            sort,name,title,product_name,price,promotion,coupon,in_store,evaluate = '','','','','','','','',''
+            for element in page_sort:
+                element_text = await page.evaluate('(element) => element.textContent', element)
+                sort += element_text.strip() + ' '
+            for element in page_name:
+                element_text = await page.evaluate('(element) => element.textContent', element)
+                name += element_text.strip()
+            for element in page_title:
+                element_text = await page.evaluate('(element) => element.textContent', element)
+                title += element_text.strip()
+            for element in page_product_name:
+                element_text = await page.evaluate('(element) => element.textContent', element)
+                product_name += element_text.strip()
+            for element in page_price:
+                element_text = await page.evaluate('(element) => element.textContent', element)
+                price += element_text.strip()
+            for element in page_promotion:
+                element_text = await page.evaluate('(element) => element.textContent', element)
+                promotion += element_text.strip()
+            for element in page_coupon:
+                element_text = await page.evaluate('(element) => element.textContent', element)
+                coupon += element_text.strip()
+            for element in page_in_store:
+                element_text = await page.evaluate('(element) => element.textContent', element)
+                in_store += element_text.strip()
+            for element in page_evaluate:
+                element_text = await page.evaluate('(element) => element.textContent', element)
+                evaluate += element_text.strip()
+            # print('name_id:'+product_name_id,'sort :'+sort,'name :'+name,'title :'+title,'product_name :'+product_name,'price :'+price,'promotion :'+promotion,'coupon :'+coupon,'in_store :'+in_store,'evaluate :'+evaluate)
 
-        page_sort = await page.xpath(xpath_sort)
-        page_name = await page.xpath(xpath_name)
-        page_title = await page.xpath(xpath_title)
-        page_product_name = await page.xpath(xpath_product_name)
-        page_price = await page.xpath(xpath_price)
-        page_promotion = await page.xpath(xpath_promotion)
-        page_coupon = await page.xpath(xpath_coupon)
-        page_in_store = await page.xpath(xpath_in_store)
-        page_evaluate = await page.xpath(xpath_evaluate)
+            if len(sort) < 1:
+                return ''
+            # 数据库插入操作
+            async with pool.acquire() as conn:
+                async with conn.cursor() as cur:
+                    # 使用参数占位符，防止SQL注入攻击
+                    sql = f"INSERT INTO jd (name_id,sort,name,title,product_name,price,promotion,coupon,in_store,evaluate) VALUES ('{product_name_id}','{sort}', '{name}', '{title}', '{product_name}', '{price}', '{promotion}', '{coupon}', '{in_store}',' {evaluate}')"
+                    await cur.execute(sql)
+                    await conn.commit()
+            # print('pass:',product_name_id)
+            # 每次访问完成后等待3秒
 
-        # 提取文本内容
-        text = ''
-        for element in page_sort:
-            element_text = await page.evaluate('(element) => element.textContent', element)
-            text += element_text.strip() + ' '
-        print(text)
-        # 保存到MySQL数据库
-        # async with pool.acquire() as conn:
-        #     async with conn.cursor() as cur:
-        #         await cur.execute("INSERT INTO your_table_name (url, content) VALUES (%s, %s)", (url, text))
-        #         await conn.commit()
-        # 每次访问完成后等待3秒
-        await asyncio.sleep(30)
-        await browser.close()
+            await browser.close()
+    except Exception as e:
+        print(e)
+        print(url)
 
-        # 每次访问完成后等待3秒
-        await asyncio.sleep(3)
+
+def item_url():
+    with open('item_url.txt','r',encoding='utf-8') as f:
+        return f.read().split('\n')
 
 
 async def main():
     # 创建MySQL连接池
-    pool = await aiomysql.create_pool(host='127.0.0.1', port=3306,
-                                      user='root', password='123456',
-                                      db='a', loop=loop)
+    pool = await aiomysql.create_pool(
+        host='127.0.0.1',
+        port=3306,
+        user='root',
+        password='123456',
+        db='a',
+        charset='utf8mb4',
+        autocommit=True,
+        minsize=1,
+        maxsize=10
+    )
 
-    # 要访问的网页列表
-    urls = ['https://item.jd.com/70615112236.html', 'https://item.jd.com/10071886235956.html', ]
-
+    urls = item_url()
     # 设置并发数量为50
-    concurrency = 50
-    semaphore = asyncio.Semaphore(concurrency)
+    # 创建信号量，限制同时进行的协程数量
+    semaphore = asyncio.Semaphore(5)
 
-    tasks = []
-    for url in urls:
-        tasks.append(fetch_and_save(url, pool, semaphore))
-
+    tasks = [fetch_and_save(url, pool, semaphore) for url in urls]
     await asyncio.gather(*tasks)
 
-    pool.close()
-    await pool.wait_closed()
+if __name__ == '__main__':
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main())
-
-
-# referer = 'https://jd.com/'
-# headers['Referer'] = referer
-# url = 'https://item.jd.com/60518348474.html'
-#
-# xpath_sort = '//*[@id="crumb-wrap"]/div/div[1]/div/a/text()'
-# xpath_name = '//*[@id="crumb-wrap"]/div/div[2]/div[2]/div[1]/div/a/text()'
-# xpath_title = '/html/body/div[6]/div/div[2]/div[1]/text()'
-# product_name = url.split('https://item.jd.com/')[1].split('.')[0]
-# xpath_product_name = f'//*[@id="choose-attr-1"]/div[2]/div[@data-sku="{product_name}"]/a/i/text()'
-# r = etree.HTML(requests.get(url,headers=headers).text)
-# sort = r.xpath(xpath_sort)
-# name = r.xpath(xpath_name)
-# title = [r.xpath(xpath_title)[0].strip()]  # 去除两边除字符串中的空格和换行符
-# product_name = r.xpath(xpath_product_name)
-# print(sort,name,title,product_name)
 
 
 
